@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Search Results</title>
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+        ul li {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        ul li a {
+            color: #333;
+        }
+        ul li a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+        a {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>(<%= nItems %>) is found. There are (<%= nItems %>) books.</h2>
+    <ul>
+        <% for (var i of items) { %>
+        <li>UserName: <a href="/details?_id=<%= i._id %>"><%= i.UserName %></a></li>
+        <% } %>
+    </ul>
+    <a href="/home">Back to home</a>
+</body>
+</html>

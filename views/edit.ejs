@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .jumbotron {
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+    }
+    form {
+        width: 80%;
+        margin: 0 auto;
+    }
+    label {
+        font-size: 1.2em;
+        display: block;
+        margin-top: 20px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        border: 1px solid #333;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        display: block;
+        width: 100px;
+        margin: 20px auto;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    input[type="submit"]:hover {
+        background-color: #fff;
+        color: #333;
+    }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Update Document Information</h1>
+    </div>
+    <form action="/update" method="POST">
+
+    <label for="UserName" value="item.UserName"><b>User Name: <%= item.UserName %></b></label><br><br>
+    
+    <input type="hidden" id="postId" name="postId" value="<%= item.UserName %>" />
+     
+    <label for="date"><b>Date:</b></label>
+    <input type="date" id="date" name="date" class="form-control" placeholder="" value= "<% if (item.Date) { %><%= item.Date %><% } %>" /><br><br>
+                
+    <label for="borrow_or_return"><b>Borrow or Return Book:</b></label>
+    <select id="borrow_or_return" name="borrow_or_return" class="form-control">
+        <option value="Borrow" <% if (item.Borrow_or_Return === "Borrow") { %>selected<% } %>>Borrow</option>
+        <option value="Return" <% if (item.Borrow_or_Return === "Return") { %>selected<% } %>>Return</option>
+    </select><br><br>
+
+    <label for="book_type"><b>Book Type:</b></label>
+    <input type="text" id="book_type" name="book_type" class="form-control" placeholder="" value ="<% if (item.Book_Information.Book_Type) { %><%= item.Book_Information.Book_Type %><% } %>" /><br><br>
+                
+    <label for="book_name"><b>Book Name:</b></label>
+    <input type="text" id="book_name" name="book_name" class="form-control" placeholder="" value ="<% if (item.Book_Information.Book_Name) { %><%= item.Book_Information.Book_Name %><% } %>"/> <br><br>
+                
+    <label for="phone_num"><b>Telephone Number:</b></label>
+    <input type="text" id="phone_num" name="phone_num" class="form-control" placeholder="" value = "<% if (item.Telephone_Number) { %><%= item.Telephone_Number %><% } %>" /><br><br>
+                
+    <label for="remark"><b>Remark:</b></label><br>
+    <textarea name="remark" cols="50" rows="10" placeholder="" value = "<% if (item.Remark) { %><%= item.Remark %><% } %>" /></textarea><br>
+
+    <input type="submit" value="update">
+</body>
+</html>

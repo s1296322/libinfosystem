@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+    /* CSS styles for text size */
+	body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .jumbotron {
+            padding: 30px;
+            background-color: #aaaaaa;
+            color: #fff;
+            text-align: center;
+        }
+        .jumbotron h1 {
+            font-size: 40px;
+        }
+        .jumbotron p {
+            font-size: 20px;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .row a {
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        .row a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Library Document Information Management System</h1>	
+<p><%= greeting %></p>
+
+<p> <img src="pic/library3.png" width="582" height="326"" alt="library picture" > </p>
+	<p><a href='pic/library.jpeg'>library picture</a></p>
+	<p><a href='/download/video_inside_a_library2.mp4'>library video</a></p>
+    </div>
+    <div class="row ml-md-auto">
+
+        <a href="/create" role="button">Create New Document</a> <br>
+        <a href="/find" role="button">Find existing document by user name</a> <br>
+        <a href="/list" role="button">Show all user document information</a> <br>
+        <a href="/logout" role="button">Logout</a>
+    </div>
+    
+</body>
+</html>

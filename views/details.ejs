@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .jumbotron {
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+            padding: 50px 0;
+            border-bottom: 5px solid #0056b3;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button, a {
+            width: 200px;
+            height: 40px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            margin: 10px;
+        }
+
+        button:hover, a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Library Document Information</h1>
+    </div>
+    <div class="row">
+        <table id="data-table">
+            <tr>
+                <th>User_Name :</th>
+                <td><% if (typeof (item.UserName) !== "undefined") { %><%= item.UserName %><% } %></td>
+            </tr>
+            <tr>
+                <th>Date :</th>
+                <td><% if (typeof (item.Date) !== "undefined") { %><%= item.Date %><% } %></td>
+            </tr>
+            <tr>
+                <th>Book_Type :</th>
+                <td><% if (typeof (item.Book_Information.Book_Type) !== "undefined") { %><%= item.Book_Information.Book_Type %><% } %></td>
+            </tr>
+            <tr>
+                <th>Book_Name :</th>
+                <td><% if (typeof (item.Book_Information.Book_Name) !== "undefined") { %><%= item.Book_Information.Book_Name %><% } %></td>
+            </tr>
+            <tr>
+                <th>Borrow_or_Return :</th>
+                <td><% if (typeof (item.Borrow_or_Return) !== "undefined") { %><%= item.Borrow_or_Return %><% } %></td>
+            </tr>
+            <tr>
+                <th>Telephone_Number :</th>
+                <td><% if (typeof (item.Telephone_Number) !== "undefined") { %><%= item.Telephone_Number %><% } %></td>
+            </tr>
+            <tr>
+                <th>Remark :</th>
+                <td><% if (typeof (item.Remark) !== "undefined") { %><%= item.Remark %><% } %></td>
+            </tr>
+        </table>
+    </div>
+    <div class="center">
+        <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
+    <script>
+        function exportToExcel() {
+            const table = document.getElementById('data-table');
+            const workbook = XLSX.utils.table_to_book(table);
+            XLSX.writeFile(workbook, 'library_information.xlsx');
+        }
+    </script>
+    <div class="button-container">
+        <a href="/edit?_id=<%= item._id %>" >Update the information</a>
+        <a href="/delete?_id=<%= item._id %>&owner=<%= item.ownerID %>">Delete the information</a>
+        <a href="/home">Back to home</a>
+    </div>
+</body>
+</html>
